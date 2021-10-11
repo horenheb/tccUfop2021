@@ -1,0 +1,43 @@
+# Project: Genetic Quest
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = main.o distance.o route.o population.o genetic.o annealing.o
+LINKOBJ  = main.o distance.o route.o population.o genetic.o annealing.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -L"C:/Program Files/MySQL/Connector C++ 8.0/lib64" -L"C:/Program Files/MySQL/MySQL Server 8.0/lib" -lmysql -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files/MySQL/MySQL Server 8.0/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"C:/Program Files/MySQL/MySQL Server 8.0/include"
+BIN      = "Genetic Quest.exe"
+CXXFLAGS = $(CXXINCS) -g3 -std=c++11
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+distance.o: distance.cpp
+	$(CPP) -c distance.cpp -o distance.o $(CXXFLAGS)
+
+route.o: route.cpp
+	$(CPP) -c route.cpp -o route.o $(CXXFLAGS)
+
+population.o: population.cpp
+	$(CPP) -c population.cpp -o population.o $(CXXFLAGS)
+
+genetic.o: genetic.cpp
+	$(CPP) -c genetic.cpp -o genetic.o $(CXXFLAGS)
+
+annealing.o: annealing.cpp
+	$(CPP) -c annealing.cpp -o annealing.o $(CXXFLAGS)
